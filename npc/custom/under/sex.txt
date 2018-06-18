@@ -1,0 +1,52 @@
+// =============================
+/* Change Sex per Character: http://herc.ws/board/topic/14030-r-change-sex-per-character-gender/
+	----------------------------
+	by: Legend
+	compatible w/: Hercules
+	----------------------------
+	Description:
+	* It requires client 2014-10-22 or greater.
+	* Performs change sex per character
+	* Allows you to set requirements as many as you want.
+	----------------------------
+	Comments:
+	* Please report to me if bugs were found:
+	  Contact: http://herc.ws/board/user/5387-legend/
+*/
+// =============================
+prontera,124,170,5	script	Sex Slave	4_F_NURSE,{
+	mes "[ "+.n$+" ]";
+	mes "How may I help you?";
+	next;
+	if (select("Change my character's sex","Nothing") != 1){
+		mes "[ "+.n$+" ]";
+		mes "Come back to me if you're well decided.";
+		close;
+	}
+	.@is = getarraysize(.i);
+	dispbottom "============";
+	dispbottom "Requirements:";
+	dispbottom "============";
+	for ( .@a = 0; .@a < .@is; .@a += 2 ){
+		dispbottom getitemname(.i[.@a])+" ("+countitem(.i[.@a])+"/"+.i[.@a+1]+")";
+		if (countitem(.i[.@a]) < .i[.@a+1]){
+			.@b++;
+		}
+	}
+	if (.@b) {
+		message strcharinfo(0), "The deal has been cancelled!";
+		close;
+	}
+	for ( .@c = 0; .@c < .@is; .@c += 2 ){
+		delitem .i[.@c], .i[.@c+1];
+	}
+	changecharsex;
+	close;
+
+OnInit:
+	.n$ = "Nurse";
+	// Requirements goes here
+	// Syntax: <itemid1>,<amount>,<itemid2>,<amount>,...
+	setarray .i[0],20030,20;
+	end;
+}

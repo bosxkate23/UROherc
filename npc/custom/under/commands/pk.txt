@@ -1,0 +1,25 @@
+-	script	autoCommand	FAKE_NPC,{
+
+end;
+
+OnPCLoginEvent:
+
+atcommand("@pk");
+announce "Hey "+strcharinfo(0)+", Welcome to UndergroundRO",bc_self;
+dispbottom "[ :+: Information:+: ] --------------------------------------------------------------";
+dispbottom "Facebook Group Name: Underground - The Expansion";
+dispbottom "https://www.facebook.com/groups/undergroundtexp";
+dispbottom "[ :+: Warning - Rules :+: ] -------------------------------------------------------";
+dispbottom "- Do not give your ID and Password to anyone including the UndergroundRO Staffs.";
+dispbottom "- Don not use third party program to CHEAT the game!";
+dispbottom "- Do not Scam or Impersonate other player.";
+dispbottom "- Please report any bugs you found to UndergroundRO Staff.";
+dispbottom "- Please make sure you follow all the rules and don't break any of it. If you break any Rules, Game Master will take action.";
+dispbottom "If you break any Rules, Game Master will take action.";
+dispbottom "[ :+: Player Status :+: ] ----------------------------------------------------------";
+dispbottom "PK State is now ON.";
+dispbottom "Usage: @pk to turn it OFF";
+dispbottom "Security is currently OFF";
+dispbottom "Usage: @security to turn it ON";
+end;
+}

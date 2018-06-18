@@ -1,0 +1,78 @@
+//===== rAthena Script =======================================
+//= Euphy's Quest Shop
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.6b
+//===== Compatible With: =====================================
+//= rAthena SVN r16862+
+//===== Description: =========================================
+//= A dynamic quest shop based on Lunar's, with easier config.
+//= Includes support for multiple shops & cashpoints.
+//= Item Preview script by ToastOfDoom.
+//===== Additional Comments: =================================
+//= 1.0 Initial script.
+//= 1.2 Added category support.
+//= 1.3 More options and fixes.
+//= 1.4 Added debug settings.
+//= 1.5 Replaced categories with shop IDs.
+//= 1.6 Added support for purchasing stackables.
+//= 1.6a Added support for previewing costumes and robes.
+//= 1.6b Added 'disable_items' command.
+//============================================================
+
+// Shop NPCs -- supplying no argument displays entire menu.
+//	callfunc "qshop"{,<shop ID>{,<shop ID>{,...}}};
+//============================================================
+prontera,150,210,1	script	Kram	4_M_EINMINER,{ 
+mes "[ Kram ]";
+mes "I've found a cave here!";
+next;
+mes "[ Kram ]";
+mes "I am Kram the Miner, the crafter of Mithril Coin/s";
+mes "Would you like me to craft you the Mithril Coin?";
+next;
+menu "Sure",-,"Maybe Later",L_basho;
+next;
+mes "[ Kram ]";
+mes "This coin is quite brittle.";
+mes "So it needs some items to harness it.";
+mes "I require you to give me these items";
+next;
+mes "[ Kram ]";
+mes "10 Mithril Ore";
+mes "50 Treasure Box";
+mes "5 Credits";
+next;
+if(countitem(7233) < 10 || countitem(7444) < 50 || countitem(20030) < 5) goto M_wala;
+if(countitem(7233) >= 10 || countitem(7444) >= 50 || countitem(20030) >= 5) goto M_eron;
+mes "[ Kram ]";
+mes "Hurry up! I have something to do.";
+close;
+L_basho:
+
+mes "[ Kram ]";
+mes "Talk to me when you want it already.";
+close;
+
+M_wala:
+
+mes "[ Kram ]";
+mes "You lack some few items.";
+close;
+
+M_eron:
+
+mes "[ Kram ]";
+mes "Oh thank you!";
+delitem 7233,10;
+delitem 7444,50;
+delitem 20030,5;
+getitem 674,1;
+next;
+mes "[ Kram ]";
+mes "Good one boy! Enjoy the Coins";
+mes "And you can exchange it to Castle Drops";
+announce ""+strcharinfo(0)+" has created the mystical Mithril Coin.",8;
+close;
+}

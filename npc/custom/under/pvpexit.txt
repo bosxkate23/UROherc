@@ -1,0 +1,16 @@
+// warp portal back prontera
+force_2-2,158,177,4	script	The Exit	4_NFCOFFIN,{
+	mes "[ Dead ]";
+	mes "You want to leave?";
+	while (1) {
+	switch(select("Yes, I'm Scared!", "Dqf? No!")) {
+	case 1:
+		warp "prontera" ,156,191;
+	end;
+	case 2:
+	mes "[ Dead ]";
+	mes "Okay, Brave man!";
+	close;
+	}
+}
+}

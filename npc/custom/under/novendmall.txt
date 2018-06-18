@@ -1,0 +1,14 @@
+mall,90,111,5	script	Vending Lane	4_BULLETIN_BOARD2,{
+mes "[^0000FFMarket Main^000000]";
+mes "You can only use ^008A93Vending Skill^000000 in this lane.";
+close;
+// Map for vending
+set .map$,"mall";
+//	setcell .map$,0,0,143,155,cell_novending,1; // Line 1
+	setcell .map$,90,110,90,80,cell_novending,1; // Line 2
+//	setcell .map$,103,110,103,82,cell_novending,0; // Line 3
+//	setcell .map$,109,110,109,82,cell_novending,0; // Line 4
+}
+mall,96,111,5	duplicate(Vending Lane)	Vending Lane#2	4_BULLETIN_BOARD2
+mall,103,111,5	duplicate(Vending Lane)	Vending Lane#3	4_BULLETIN_BOARD2
+mall,109,111,5	duplicate(Vending Lane)	Vending Lane#4	4_BULLETIN_BOARD2

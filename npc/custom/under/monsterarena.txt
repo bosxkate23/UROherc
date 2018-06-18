@@ -1,0 +1,543 @@
+prontera,165,150,4	script	Monster Arena	4_F_FENRIR,{
+if(lifetime >= 1) goto LLT;
+mes "[ Gate Keeper ]";
+mes "What do you want to do?";
+menu "Enter Monster Arena",-,"Exchange Arena Tickets",Lex,"Check Arena Tickets",Lcheck;
+next;
+mes "[ Gate Keeper ]";
+mes "You can earn Tickets by killing monster that are inside there, and the Tickets you earn can be traded for cool stuffs.";
+next;
+mes "[ Gate Keeper ]";
+mes "There are two kinds of Gate pass, the ^0000FFone-time ticket^000000 is for one entry which cost 1 Credit and there's a ^0000FFlife-time ticket^000000 that can give you access anytime which cost 10 Credits.";
+mes "What entry do you want to go to?";
+menu "One-Time Ticket",-,"Life-Time Ticket",Llife;
+next;
+if(countitem(20030) < 1) goto Lnen;
+mes "[ Gate Keeper ]";
+mes "Here you go! Come & Visit us again!";
+mes "*Stamp Stamp*";
+delitem 20030,1;
+close2;
+warp "bat_b02",312,225;
+end;
+
+OnInit:
+	waitingroom "Monster Arena",0;
+	end;
+Llife:
+if(countitem(20030) < 10) goto Lnen;
+mes "[ Gate Keeper ]";
+mes "Wow! you must be rich! Here you go! Come & Visit us again!";
+mes "*Stamp Stamp*";
+delitem 20030,10;
+set lifetime,1;
+close2;
+warp "bat_b02",312,225;
+
+Lnot:
+next;
+mes "[ Gate Keeper ]";
+mes "Suit yourself!";
+close;
+
+Lnen:
+next;
+mes "[ Gate Keeper ]";
+mes "Not enough Credits!";
+close;
+
+LLT:
+mes "[ Gate Keeper ]";
+mes "What do you want to do?";
+menu "Enter Monster Arena",-,"Exchange Tickets",Lex,"Check Arena Tickets",Lcheck;
+next;
+mes "[ Gate Keeper ]";
+mes "I see you have a life-time pass..";
+mes "Do you want to enter the Monster Arena?";
+menu "Yes",-,"No",Lnot;
+next;
+mes "[ Gate Keeper ]";
+mes "Bye! Shazam !";
+close2;
+warp "bat_b02",312,225;
+end;
+
+
+Lnoep:
+mes "[ Gate Keeper ]";
+mes "Not Enough Tickets!";
+close;
+
+Lcheck:
+next;
+mes "[ Gate Keeper ]";
+mes strcharinfo(0)+"'s Arena Ticket : ^0000FF"+countitem(30539)+"^000000 Ticket(s)";
+close;
+
+Lex:
+next;
+mes "[ Gate Keeper ]";
+mes "Choose from the categories below :";
+menu "Cards",-,"^0000ffEquips^000000",Leqp,"^FF00FFSupplies^000000",Lsupp;
+next;
+mes "[ Gate Keeper ]";
+mes "Choose from my card album..";
+menu "Atroce Card - 10,000",-,"Golden Thief Bug Card - 15,000",Lgtb,"Memory of Thanatos Card - 20,000",Lthana,"Fallen Bishop Card - 30,000",Lfbh,"Gloom Under Night Card - 30,000",Lgloom;
+
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 10000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 4425,1;
+delitem 30539,10000;
+close;
+
+Lgtb:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 15000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";;
+getitem 4128,1;
+delitem 30539,15000;
+close;
+
+Lthana:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 20000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 4399,1;
+delitem 30539,20000;
+close;
+
+Lfbh:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 30000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 4441,1;
+delitem 30539,30000;
+close;
+
+Lgloom:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 30000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 4408,1;
+delitem 30539,30000;
+close;
+
+Leqp:
+next;
+mes "[ Gate Keeper ]";
+mes "Choose from the available equipments..";
+menu "Fusion Valkyrie Armor - 10,000",-,"Fusion Valkyrie Manteau - 10,000",Lfmant,"Fusion Valkyrie Shoes - 10,000",Lfshoe,"Fusion Valkyrie Shield - 10,000",Lfshld,"Travelers Hat - 15,000",Ltrhat,"Kakashi Headprotector - 15,000",Lkakas,"Ensign Helm - 15,000",Lensi,"Cyclops Eye - 30,000","Devil Wings - 30,000",Ldevil;
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 10000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20042,1;
+delitem 30539,10000;
+close;
+
+Lfmant:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 10000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20043,1;
+delitem 30539,10000;
+close;
+
+Lfshoe:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 10000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20045,1;
+delitem 30539,10000;
+close;
+
+Lfshld:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 10000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20044,1;
+delitem 30539,10000;
+close;
+
+Ltrhat:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 15000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20027,1;
+delitem 30539,15000;
+close;
+
+Lkakas:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 15000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20026,1;
+delitem 30539,15000;
+close;
+
+Lensi:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 15000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20028,1;
+delitem 30539,15000;
+close;
+
+Ldevil:
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 30000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 20056,1;
+delitem 30539,30000;
+close;
+
+
+
+Lsupp:
+next;
+mes "[ Gate Keeper ]";
+mes "Choose from the available supplies.";
+menu "50 Box of Thunder - 100",-,"50 Yggdrasil Berry - 150",Lberry,"50 Yggdrasil Seed - 75",Lseed,"50 Poison Bottle - 500",Ledp,"50 Glistening Coat - 1000",Lgcoat,"50 Cursed Water - 100",Lcwater,"50 Wind Converter - 150",Lwconv,"50 Earth Converter - 150",Leconv,"50 Fire Converter - 150",Lfconv,"50 Frost Converter - 150",Lfrconv,"10 STR Food +10 - 500",Lsfood,"10 AGI Food +10 - 500",Lafood,"10 VIT Food +10 - 500",Lvfood,"10 INT Food +10 - 500",Lifood,"10 DEX Food +10 - 500",Ldfood,"10 LUK Food +10 - 500",Llfood;
+next;
+mes "[ Gate Keeper ]";
+mes "....";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 100) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12028,50;
+delitem 30539,100;
+close;
+
+Lberry:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 607,50;
+delitem 30539,150;
+close;
+
+Lseed:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF75^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 75) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 608,50;
+delitem 30539,75;
+close;
+
+Ledp:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 678,50;
+delitem 30539,500;
+close;
+
+Lgcoat:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF1000^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 1000) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 7139,50;
+delitem 30539,1000;
+close;
+
+Lcwater:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF100^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 100) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12020,50;
+delitem 30539,100;
+close;
+
+Lwconv:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12117,50;
+delitem 30539,150;
+close;
+
+Leconv:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12116,50;
+delitem 30539,150;
+close;
+
+Lfconv:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12114,50;
+delitem 30539,150;
+close;
+
+Lfrconv:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12115,50;
+delitem 30539,150;
+close;
+
+Lconv:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF150^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 150) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12114,50;
+delitem 30539,150;
+close;
+
+Lsfood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12075,10;
+delitem 30539,500;
+close;
+
+Lafood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12090,10;
+delitem 30539,500;
+close;
+
+Lvfood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12085,10;
+delitem 30539,500;
+close;
+
+Lifood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12080,10;
+delitem 30539,500;
+close;
+
+Ldfood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12095,10;
+delitem 30539,500;
+close;
+
+Llfood:
+next;
+mes "[ Gate Keeper ]";
+mes "You can get these for ^FF00FF500^000000 Tickets, Do you still want it?";
+menu "Yes",-,"Nevermind",Lnot;
+next;
+if(countitem(30539) < 500) goto Lnoep;
+mes "[ Gate Keeper ]";
+mes "Here you go!";
+getitem 12100,10;
+delitem 30539,500;
+close;
+
+}
+
+
+
+-	script	monsterarena	FAKE_NPC,{
+
+OnGuardianKill:
+getitem 30539,10;
+dispbottom "You earned 10 Arena Tickets";
+end;
+
+OnBowGuardianKill:
+getitem 30539,3;
+dispbottom "You earned 3 Arena Tickets";
+end;
+
+OnFlower1Kill:
+getitem 30539,10;
+dispbottom "You earned 10 Arena Tickets";
+end;
+
+OnFlower2Kill:
+getitem 30539,10;
+dispbottom "You earned 10 Arena Tickets";
+end;
+
+OnFlower3Kill:
+getitem 30539,10;
+dispbottom "You earned 10 Arena Tickets";
+end;
+
+OnPCDieEvent:
+        if ( strcharinfo(3) == "bat_b02" ) {
+            if ( death >= 0 ) {
+	delitem 30539,100;
+                dispbottom "You have lost 100 Arena Ticket. Your total is "+countitem(30539)+" Arena Tickets.";
+                set death, 0;
+            }
+	}
+}
+
+
+
+bat_b02,0,0,0,0	monster	Wild Flower	2111,15,1,7200,monsterarena::OnFlower1Kill
+bat_b02,0,0,0,0	monster	Wild Flower	2111,15,1,7200,monsterarena::OnFlower2Kill
+bat_b02,0,0,0,0	monster	Wild Flower	2111,15,1,7200,monsterarena::OnFlower3Kill
+bat_b02,0,0,0,0	monster	Arena Bow Guardian	2108,50,5,900,monsterarena::OnGuardianKill
+bat_b02,0,0,0,0	monster	Arena Sword Guardian	2109,50,5,900,monsterarena::OnBowGuardianKill
+
+///////////
+
+bat_b02	mapflag	nosave
+bat_b02	mapflag	pvp
+bat_b02	mapflag	noteleport
+bat_b02	mapflag	nowarpto
+bat_b02	mapflag	noreturn
+bat_b02	mapflag	nobranch
+bat_b02	mapflag	noskill

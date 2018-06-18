@@ -1,0 +1,67 @@
+prontera,91,209,5	script	Icarus	4_M_HUMERCHANT,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^FF0000Icarus^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Oh Grasya Santisimo!!";
+mes "Hello there ^FF0000" + strcharinfo(0) + "^000000.";
+next;
+mes .npcname$;
+mes "By the way I am ^FF0000Icarus^000000 crafter of Icarus Wing";
+mes "Would you like to possess it?";
+menu "Yes, I deserve it!",-,"No, I'm not good enough.",L_ayaw;
+next;
+mes .npcname$;
+mes "This Wing is very complicated, it needs ^FF0000very rare^000000 materials to craft it. If you really want to possess it gather these items for me";
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF00001x Black Butterfly Wing^000000";
+mes "^FF00001x White Butterfly Wing^000000";
+mes "^FF00001x Angeling Wing^000000";
+mes "^FF00001x Deviling Wing^000000";
+mes "^FF0000200x Yellow Gemstone^000000";
+mes "^FF0000200x Red Gemstone^000000";
+mes "^FF0000100x Orange Dyestuff^000000";
+mes "^FF0000100x Gold^000000";
+mes "^FF000010x Credits^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(20011) < 1 || countitem(20012) < 1 || countitem(30030) < 1 || countitem(30028) < 1 || countitem(980) < 100 || countitem(715) < 200 || countitem(716) < 200 || countitem(969) < 100 || countitem(20030) < 10) goto koolangz;
+if(countitem(20011) >= 1 || countitem(20012) >= 1 || countitem(30030) >= 1 || countitem(30028) >= 1 || countitem(980) >= 100 || countitem(715) >= 200 || countitem(716) >= 200 || countitem(969) >= 100 || countitem(20030) >= 10) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Wacha Wachi Wacho... Go! Shoooo";
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest and acquired the ^FF0000Icarus Wings^000000.";
+delitem 20011,1;
+delitem 20012,1;
+delitem 30030,1;
+delitem 30028,1;
+delitem 715,200;
+delitem 716,200;
+delitem 969,100;
+delitem 980,100;
+delitem 20030,10;
+next;
+getitem 20005,1;
+announce " "+strcharinfo(0)+" has crafted the Legendary Wings worn by Icarus the Hero!",0,0xffbc55;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

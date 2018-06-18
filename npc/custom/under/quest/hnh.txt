@@ -1,0 +1,74 @@
+jawaii,202,240,3	script	Neggi the Cat	4_CAT,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdNeggi the Cat^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello ^ff0000" + strcharinfo(0) + "^000000,";
+mes "Can you help me?";
+menu "Sure! What is it?",-,"No way!",L_ayaw;
+mes .npcname$;
+mes "I am hiding from my owner, I stole a wing from neighbor";
+mes "It feels like there's something on it.. something powerful!";
+next;
+mes .npcname$;
+mes "This wing has 2 colors White and Black, and has bat and feathered thingy";
+mes "I heard my owner and neighbor that this is called Heaven and Hell Wings!";
+mes "Hurry my owner is coming!..";
+mes "I don't want it to have them back..";
+next;
+mes .npcname$;
+mes "I will give this to you in exchange of my needs";
+mes "Would you like to have it?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF0000250x Red Feather^000000";
+mes "^FF0000200x Little Evil Wing^000000";
+mes "^FF0000200x Soft Feather^000000";
+mes "^FF0000200x Peco Peco Feather^000000";
+mes "^FF0000200x Harpy Feather^000000";
+mes "^FF00001x Icarus Wings^000000";
+mes "^FF00001x Angeling Wings^000000";
+mes "^FF00001x Deviling Wings^000000";
+mes "^FF00003x Emblem of the Sun God^000000";
+mes "^FF000050x Credits^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(7440) < 250 || countitem(1039) < 200 || countitem(7063) < 200 || countitem(7101) < 200 || countitem(7115) < 200 || countitem(20005) < 1 || countitem(30030) < 1 || countitem(30028) < 1 || countitem(20030) < 30 || countitem(7086) < 3) goto koolangz;
+if(countitem(7440) >= 250 || countitem(1039) >= 200 || countitem(7063) >= 200 || countitem(7101) >= 200 || countitem(7115) >= 200 || countitem(20005) >= 1 || countitem(30030) >= 1 || countitem(30028) >= 1 || countitem(20030) >= 30 || countitem(7086) >= 3) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you're interested in it already, Go away!";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 7440,250;
+delitem 1039,200;
+delitem 7063,200;
+delitem 7101,200;
+delitem 7115,200;
+delitem 20005,1;
+delitem 30030,1;
+delitem 30028,1;
+delitem 7086,3;
+delitem 20030,30;
+next;
+getitem 20015,1;
+next;
+mes .npcname$;
+mes "Good Job! Now RUN!!!";
+close;
+}

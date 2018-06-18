@@ -1,0 +1,47 @@
+new_2-2,100,29,5	script	Erna	4W_F_KAFRA2,{
+if (#solopack){
+	mes "[ ^5050A0Erna^000000 ]";
+ 	mes "You have already claimed your freebies";
+			savepoint "prontera",156,191;
+			warp "prontera",156,191;
+	close;
+	}	
+	mes "[ ^5050A0Erna^000000 ]";
+	mes "Aye yo, want some free thangzz!";
+	mes "I'm giving away free gifts for everyone!";
+	next;
+	mes "[ ^5050A0Erna^000000 ]";
+	mes "Yay! Free + Gift = Awsm!";
+	switch(select("Get 'emmm!")){
+	case 1: //
+//	getitembound 30536,1,1; //Solo Package
+	getitembound 12263,1,1;//Field Manual
+	getitembound 20010,1,1; //White Valkyrie Armor
+	getitembound 20009,1,1; //White Valkyrie Manteau
+	getitembound 20008,1,1;//White Valkyrie Shield
+	getitembound 20006,1,1;//White Valkyrie Shoes
+	getitembound 20066,1,1;//Skateboard
+	getitembound 4142,2,1;//Doppelganger Card
+	getitembound 2614,2,1;//Eye of Dullahan
+	getitembound 20007,1,1;//White Valkyrie Helm
+	getitembound 20035,1,1;//White Cyclops
+	getitembound2 1208,1,1,10,0,0,0,0,0,1; // +10 WEAPONS
+	getitembound2 1550,1,1,10,0,0,0,0,0,1;
+	getitembound2 1505,1,1,10,0,0,0,0,0,1;
+	getitembound2 1705,1,1,10,0,0,0,0,0,1;
+	getitembound2 1108,1,1,10,0,0,0,0,0,1;
+	getitembound2 1602,1,1,10,0,0,0,0,0,1;
+	getitembound2 1408,1,1,10,0,0,0,0,0,1;
+	getitembound2 1902,1,1,10,0,0,0,0,0,1;
+//	callfunc M_FreeF;
+	set #solopack,1;
+	next;
+	mes "Goodluck on your adventures!";
+	warp "prontera" ,156,191;
+	close;
+	}
+OnInit:
+	delwaitingroom;
+	waitingroom "Freebies? Click me!",0;
+	}
+	

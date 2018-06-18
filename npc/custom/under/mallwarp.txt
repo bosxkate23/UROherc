@@ -1,0 +1,18 @@
+prontera,161,189,4	script	Mall Warper	4_M_SWORDMAN,{
+OnTouch:
+		emotion e_paper, 0;
+		
+	mes "Hello, I can warp you to our market area!";
+	while (1) {
+	switch(select("Yes Please!", "No Thanks.")) {
+	case 1:
+	warp "mall",100,112;
+	end;
+	case 2:
+	mes "Okay bye~";
+	close;
+	}
+}
+OnInit:
+	waitingroom "Mall & Vending",0;
+}

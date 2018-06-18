@@ -1,0 +1,16 @@
+prt_in,168,171,1	script	Token Giver	1_M_YOUNGKNIGHT,{
+	mes "[Ash]";
+	mes "You currently have ^FF0000"+#Treasure_Token+"^000000 treasure tokens!!!";
+	mes "You want to have token?";
+	while (1) {
+	switch(select("Yes", "No Thanks.")) {
+	case 1:
+	mes "Here's 500 Token";
+	set #Treasure_Token,#Treasure_Token+500;
+	close;
+	case 2:
+	mes "Okay bye~";
+	close;
+	}
+}
+}

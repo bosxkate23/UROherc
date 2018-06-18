@@ -1,0 +1,60 @@
+amatsu,138,93,5	script	Hatake	4_M_ROGUE,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdHatake^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "I am the the crafter of Kakashi Headprotector..";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF00001x Heroic Emblem^000000";
+mes "^FF00005x Shinobi Sash^000000";
+mes "^FF00005x Ninja Suit^000000";
+mes "^FF0000400x Sharp Leaf^000000";
+mes "^FF0000500x Old Magicbook^000000";
+mes "^FF0000500x Dark Mask^000000";
+mes "^FF0000500x Broken Shuriken^000000";
+mes "^FF000050x Credits^000000";
+mes "^FF00003x Wrath of Valkyrie^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(968) < 1 || countitem(2654) < 5 || countitem(2337) < 5 || countitem(7100) < 400 || countitem(7157) < 500 || countitem(7156) < 500 || countitem(20030) < 50 || countitem(7078) < 3) goto koolangz;
+if(countitem(968) >= 1 || countitem(2654) >= 5 || countitem(2337) >= 5 || countitem(7100) >= 400 || countitem(7157) >= 500 || countitem(7156) >= 500 || countitem(20030) >= 50 || countitem(7078) >= 3) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 968,1;
+delitem 2654,5;
+delitem 2337,5;
+delitem 7100,400;
+delitem 7157,500;
+delitem 7156,500;
+delitem 20030,50;
+delitem 7078,3;
+next;
+getitem 20026,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

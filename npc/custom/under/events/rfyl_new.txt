@@ -1,0 +1,182 @@
+// == Rfyl with Trap's 
+// == Идея Shader
+// == Реализация Ocelote
+// == Подправил Incubus
+// == Modified and added other traps - Norm Hmuryj(Melbou)
+
+-	script	Rfyl_With_Trap_Start	-1,{
+OnClock2104:
+		disablenpc "Выход#Trap";
+		
+		announce "[Run for your Life] : Event will start after 3 minutes. Registration takes place in Prontera.",bc_all;
+		set $rfyl_trap, 1;
+		killmonster "quiz_02","All";
+		sleep 60000;
+		announce "[Run for your Life] : While the traps are set, I'll tell you the rules of Event.",bc_all;
+		sleep 3000;
+		for(set .a,0; .a <= getarraysize($RulesRfylTrap$); set .a,.a + 1)
+		{
+				announce "[Run for your Life] : "+$RulesRfylTrap$[.a]+"",bc_all;
+		}
+		sleep 57000;
+		announce "[Run for your Life] : Starting after 1 minute. All those who have registered - get ready.",bc_all;
+		sleep 60000
+		if(getarraysize($RfylTrapPlayers$) < 3)
+		{
+				announce "[Run for your Life] : Event over as does not enroll a sufficient number of players.",bc_all;
+				deletearray $RfylTrapPlayers$[0], getarraysize($RfylTrapPlayers$);
+				set $rfyl_trap, 0;
+				end;
+		}
+		for(set .i,0; .i <= getarraysize($RfylTrapPlayers$); set .i,.i + 1)
+		{
+				if($RfylTrapPlayers$[.i] != "")
+				{
+								nude;
+						warpchar "quiz_02",300,250,getcharid(0,$RfylTrapPlayers$[.i]);
+				}
+		}
+		
+		set $rfyl_trap, 2;
+		sleep 10000;
+		monster "quiz_02",300,250,"Run for your Life",1636,1,"Monster_Rfyl_Trap::OnKillMonster";
+		
+		initnpctimer;
+		end;
+		
+		OnTimer3000:
+		announce getarraysize($RfylTrapPlayers$)+"",bc_all;
+		if(getmapusers("quiz_02") > 1 && getarraysize($RfylTrapPlayers$) > 1)
+		{
+				mapannounce "quiz_02","[Run for your Life] : At the event "+getmapusers("quiz_02")+" players!",bc_map;
+				initnpctimer;
+				end;
+		}
+		else if(getmapusers("quiz_02") < 2 && getarraysize($RfylTrapPlayers$) < 2)
+		{
+				announce "[Run for your Life] : Have a winner!",bc_all;
+				mapannounce "quiz_02","[Run for your Life] : To exit of Event and pick up the prize, go to the NPC 'Выход' in the center of location",bc_map;
+				enablenpc "Выход#Trap";
+				deletearray $RfylTrapPlayers$[0], getarraysize($RfylTrapPlayers$);
+		}
+		stopnpctimer;
+		end;
+		
+		
+		OnPCDieEvent:
+		OnPCLogoutEvent:
+		
+		getmapxy $Rfyl_Trap$,$X,$Y,0;
+		
+		if($Rfyl_Trap$ == "quiz_02")
+		{
+				for(set .rf,0; .rf <= getarraysize($RfylTrapPlayers$); set .rf, .rf + 1)
+				{	
+						if(strcharinfo(0) ==  $RfylTrapPlayers$[.rf])
+						{
+								deletearray $RfylTrapPlayers$[.rf], 1;
+								atcommand "@alive "+strcharinfo(0);
+								warp "SavePoint",0,0;
+						}
+				}
+				if(getmapusers("quiz_02") < 2 && getarraysize($RfylTrapPlayers$) < 2)
+				{
+					set $rfyl_trap,0;
+					killmonster "quiz_02","All";
+					stopnpctimer;
+					announce "[Run for your Life] : Have a winner!",bc_all;
+					mapannounce "quiz_02","[Run for your Life] : To exit of Event and pick up the prize, go to the NPC 'Выход' in the center of location",bc_map;
+					enablenpc "Выход#Trap";
+					deletearray $RfylTrapPlayers$[0], getarraysize($RfylTrapPlayers$);
+				}
+		}
+		end;
+		
+		OnInit:
+		setarray $RulesRfylTrap$[0], "You go to the location with a monster, "" Who will survive - won "," On location there are ladders with different statuses";
+		end;
+}
+
+		-	script	Monster_Rfyl_Trap	-1,{
+		OnKillMonster:
+		if($rfyl_trap == 2)
+			monster "quiz_02",300,250,"Run for your Life",1636,1,"Monster_Rfyl_Trap::OnKillMonster";
+		end;
+		}
+		
+		// -- Выход :
+		quiz_02,300,250,6	script	Выход#Trap	924,{
+		getitem 7227,1;
+		warp "SavePoint",0,0;
+		end;
+		}
+
+		// -- Регистратор :
+		prontera,152,150,6	script	Rfyl Trap Mode	923,{
+		if($rfyl_trap != 1)
+		{
+			mes "Event registration is not available.";
+			close;
+		}
+		
+		if(checkriding() > 0) 
+		{
+				mes "Remove the Peco! (:";
+				close;
+		}
+		for(set .i,0; .i < getarraysize($RfylTrapPlayers$); set .i,.i+1)
+			if(strcharinfo(0) == $RfylTrapPlayers$[.i])
+				end;
+		set $RfylTrapPlayers$[getarraysize($RfylTrapPlayers$)], strcharinfo(0);
+		announce strcharinfo(0)+" - "+getarraysize($RfylTrapPlayers$),bc_all;
+		dispbottom "Are you registered, wait for the start.";
+		end;
+		}
+		
+		
+		
+		// -- Трап :
+		quiz_02,304,236,6	script	Trap_Rfyl_S#01::Rfyl_Trap	-1,1,1,{
+		OnTouch:
+		switch(rand(1,10)) {
+        case 1:
+        case 9:
+                sc_start SC_CONFUSION,8000,0;
+                end;
+        case 2:
+                sc_start SC_STONE,4000,0;
+                end;
+        case 4:
+                sc_start SC_SLEEP,4000,0;
+                end;
+        case 6:
+                sc_start SC_FREEZE,4000,0;
+                end;
+        case 8:
+                sc_start SC_STUN,4000,0;
+                end;
+        case 10:
+                sc_start SC_CURSE,80000,0;
+                end;
+        }
+		end;
+		}
+		
+		
+		// -- Дубликаты :
+		quiz_02,294,259,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#02	-1,1,1
+		quiz_02,308,260,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#03	-1,1,1
+		quiz_02,297,252,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#04	-1,1,1
+		quiz_02,308,248,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#05	-1,1,1
+		quiz_02,299,243,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#06	-1,1,1
+		quiz_02,317,239,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#07	-1,1,1
+		quiz_02,316,252,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#08	-1,1,1
+		quiz_02,293,240,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#10	-1,1,1
+		quiz_02,304,253,1	duplicate(Rfyl_Trap)	Trap_Rfyl_S#09	-1,1,1
+		
+//quiz_02	mapflag	resident
+quiz_02	mapflag	noskill
+quiz_02	mapflag	nocommand
+quiz_02	mapflag	nosave
+quiz_02	mapflag	restricted	5 // Do not forget to add a potion that can not eat, speed and potiony Butterfly Wing in db/item_noequip.txt
+		

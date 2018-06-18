@@ -1,0 +1,22 @@
+-	script	chatvendd	FAKE_NPC,{
+	end;
+	
+OnInit:
+	// CHAT[PUB]
+	setcell "prontera",146,130,165,215,cell_nochat,1;
+	setcell "prontera",124,150,137,159,cell_nochat,1;
+	//VENDING
+	setcell "prontera",146,130,165,215,cell_novending,1;
+	setcell "prontera",124,150,137,159,cell_novending,1;
+	//VENDING MALL
+	setcell "mall",69,77,126,138,cell_nochat,1;
+	//Center
+	setcell "mall",93,74,106,121,cell_novending,1;
+	//Top
+	setcell "mall",62,112,130,134,cell_novending,1;
+	//Left
+	setcell "mall",67,79,85,100,cell_novending,1;
+	//Right
+	setcell "mall",114,71,136,100,cell_novending,1;
+}
+

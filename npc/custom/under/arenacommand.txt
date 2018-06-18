@@ -1,0 +1,12 @@
+-	script	noarenacommand	FAKE_NPC,{
+OnInit:
+    	bindatcmd "storage", strnpcinfo(0)+"::OnAtcommand";
+	bindatcmd "guildstorage", strnpcinfo(0)+"::OnAtcommand";
+    	bindatcmd "gstorage", strnpcinfo(0)+"::OnAtcommand";
+    	end;
+OnAtcommand:
+	if( strcharinfo(3) == "bat_b02")
+		end;
+	atcommand .@atcmd_command$;
+	end;
+}

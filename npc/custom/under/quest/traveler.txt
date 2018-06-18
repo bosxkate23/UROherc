@@ -1,0 +1,53 @@
+izlude,105,111,6	script	Traveler	4_M_BIBI,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdTraveler^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "I am the the crafter of Travelers Hat..";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF00002x Snow Crystal^000000";
+mes "^FF00002x Omen of Tempest^000000";
+mes "^FF0000150x Soft Silk^000000";
+mes "^FF0000100x Treasure Box^000000";
+mes "^FF000030x Credits^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(7088) < 2 || countitem(7089) < 2 || countitem(7166) < 150 || countitem(7444) < 100 || countitem(20030) < 30) goto koolangz;
+if(countitem(7088) >= 2 || countitem(7089) >= 2 || countitem(7166) >= 150 || countitem(7444) >= 100 || countitem(20030) >= 30) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 7088,2;
+delitem 7089,2;
+delitem 7166,150;
+delitem 7444,100;
+delitem 20030,30;
+next;
+getitem 20027,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

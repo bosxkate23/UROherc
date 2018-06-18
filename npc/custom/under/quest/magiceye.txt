@@ -1,0 +1,51 @@
+prontera,246,254,3	script	Chiyo	4_GEFFEN_09,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdChiyo^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "I am the the crafter of Magic Eyes..";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF0000500x Blue Hair^000000";
+mes "^FF0000500x Black Hair^000000";
+mes "^FF0000100x Gold^000000";
+mes "^FF00005x Credits^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(1034) < 500 || countitem(1020) < 500 || countitem(969) < 100 || countitem(20030) < 5) goto koolangz;
+if(countitem(1034) >= 500 || countitem(1020) >= 500 || countitem(969) >= 100 || countitem(20030) >= 5) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 1034,500;
+delitem 1020,500;
+delitem 969,100;
+delitem 20030,5;
+next;
+getitem 5138,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

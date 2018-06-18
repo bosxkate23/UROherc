@@ -1,0 +1,14 @@
+-	script	Punching Bag	FAKE_NPC,{
+OnInit:
+	setmapflag( "prontera",mf_monster_noteleport );
+OnDummyKill:
+	killmonster("prontera", "Punching Bag::OnDummyKill");
+	 monster "prontera",131,154,"Punching Bag",2115,1,"Punching Bag::OnDummyKill";
+	 monster "prontera",127,154,"Punching Bag",2115,1,"Punching Bag::OnDummyKill";
+	 monster "prontera",135,154,"Punching Bag",2115,1,"Punching Bag::OnDummyKill";
+	 end;
+OnPCAttackEvent:
+	if ( !@test_punch ) end;
+	@dps_damage += @damage;
+	end;
+}

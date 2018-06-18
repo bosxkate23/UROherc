@@ -1,0 +1,54 @@
+alberta,196,174,4	script	Guruko	4_M_REINDEER,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdGuruko^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "By the way I am the Captain of this Ship, also";
+mes "the crafter of Ship Captain Hat";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF0000300x Iron^000000";
+mes "^FF0000250x Fluff^000000";
+mes "^FF0000150x Soft Silk^000000";
+mes "^FF000025x Scarlet Dyestuff^000000";
+mes "^FF00003x Romantic Gent^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(998) < 300 || countitem(914) < 250 || countitem(7166) < 150 || countitem(975) < 25 || countitem(2247) < 3) goto koolangz;
+if(countitem(998) >= 300 || countitem(914) >= 250 || countitem(7166) >= 150 || countitem(975) >= 25 || countitem(2247) >= 3) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 998,300;
+delitem 914,250;
+delitem 7166,150;
+delitem 975,25;
+delitem 2247,3;
+next;
+getitem 5359,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

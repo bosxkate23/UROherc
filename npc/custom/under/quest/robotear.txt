@@ -1,0 +1,63 @@
+aldebaran,177,109,3	script	Teuchi	4_M_GEF_SOLDIER,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdTeuchi^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "I am the the crafter of Robo Ears..";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF0000200x Metal Fragment^000000";
+mes "^FF0000200x Crest Piece 01^000000";
+mes "^FF0000200x Crest Piece 02^000000";
+mes "^FF0000200x Crest Piece 03^000000";
+mes "^FF0000200x Crest Piece 04^000000";
+mes "^FF00002x Vesper Core 01^000000";
+mes "^FF00002x Vesper Core 02^000000";
+mes "^FF00002x Vesper Core 03^000000";
+mes "^FF00001x Omen of Tempest^000000";
+mes "^FF00001x Billow^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(7095) < 200 || countitem(7356) < 200 || countitem(7357) < 200 || countitem(7358) < 200 || countitem(7359) < 200 || countitem(2659) < 2 || countitem(2660) < 2 || countitem(2661) < 2 || countitem(7091) < 1 || countitem(7089) < 1) goto koolangz;
+if(countitem(7095) >= 200 || countitem(7356) >= 200 || countitem(7357) >= 200 || countitem(7358) >= 200 || countitem(7359) >= 200 || countitem(2659) >= 2 || countitem(2660) >= 2 || countitem(2661) >= 2 || countitem(7091) >= 1 || countitem(7089) >= 1) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 7095,200;
+delitem 7356,200;
+delitem 7357,200;
+delitem 7358,200;
+delitem 7359,200;
+delitem 2659,2;
+delitem 2660,2;
+delitem 2661,2;
+delitem 7091,1;
+delitem 7089,1;
+next;
+getitem 20024,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

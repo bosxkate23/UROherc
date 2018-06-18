@@ -1,0 +1,55 @@
+ayothaya,117,140,4	script	Hanzo	1_M_SIGNROGUE,{
+//====================================[Customization Area]==========================//
+set .npcname$,"[ ^0000cdHanzo^000000 ]"; //NPC Name
+//===================================================================================//
+mes .npcname$;
+mes "Hello there ^ff0000" + strcharinfo(0) + "^000000,";
+mes "I am the the crafter of Ensign Helm..";
+next;
+mes .npcname$;
+mes "Would you like to make one?";
+menu "Yes!",-,"No!",L_ayaw;
+next;
+mes .npcname$;
+mes "If you really want to possess it gather these items for me..";
+mes "^FF00001x Heroic Emblem^000000";
+mes "^FF00001000x Folding Fan of Cat Ghost^000000";
+mes "^FF00001x Capricorn Crown^000000";
+mes "^FF000050x Credits^000000";
+mes "^FF00002x Spirit of Fish^000000";
+mes "^FF00001x Snow Crystal^000000";
+next;
+mes .npcname$;
+mes "I will be waiting for you chosen one!";
+if(countitem(998) < 300 || countitem(914) < 250 || countitem(7166) < 150 || countitem(975) < 25 || countitem(2247) < 3) goto koolangz;
+if(countitem(998) >= 300 || countitem(914) >= 250 || countitem(7166) >= 150 || countitem(975) >= 25 || countitem(2247) >= 3) goto icaruz;
+close;
+L_ayaw:
+
+mes .npcname$;
+mes "Just speak to me if you want it already";
+close;
+
+
+koolangz:
+next;
+mes .npcname$;
+mes "As I said, one missing material and all the others go to waste";
+close;
+icaruz:
+next;
+mes .npcname$;
+mes "Very well done my friend you have finished the quest.";
+delitem 968,50;
+delitem 7262,1000;
+delitem 20032,1;
+delitem 20030,50;
+delitem 7083,2;
+delitem 7088,2;
+next;
+getitem 20028,1;
+next;
+mes .npcname$;
+mes "Good Job! Enjoy your precious item.";
+close;
+}

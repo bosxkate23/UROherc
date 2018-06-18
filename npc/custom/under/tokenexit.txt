@@ -1,0 +1,18 @@
+yuno_in01,113,157,4	script	T Exit	4_M_JOB_KNIGHT1,{
+OnTouch:
+		emotion e_paper, 0;
+		
+	mes "Hello, I can warp you out to Token area!";
+	while (1) {
+	switch(select("Yes", "No Thanks.")) {
+	case 1:
+	warp "prontera",156,191;
+	end;
+	case 2:
+	mes "Okay bye~";
+	close;
+	}
+}
+OnInit:
+	waitingroom "Exit",0;
+}

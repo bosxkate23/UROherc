@@ -1,0 +1,36 @@
+﻿Build started 6/28/2017 10:07:55 PM.
+     1>Project "C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\vcproj-12\donpogi.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\src /I..\3rdparty /I..\3rdparty\pcre\include /I..\3rdparty\msinttypes\include /Zi /nologo /W3 /WX- /MP /Od /Oy- /D _DEBUG /D WIN32 /D _WINDOWS /D _USRDLL /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"donpogi\Debug\\" /Fd"donpogi\Debug\vc120.pdb" /Gd /TC /wd4996 /analyze- /errorReport:prompt /MP ..\src\plugins\donpogi.c
+         donpogi.c
+     1>..\src\plugins\donpogi.c(100): error C2039: 'class_' : is not a member of 'mmo_charstatus'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\common/mmo.h(581) : see declaration of 'mmo_charstatus'
+     1>..\src\plugins\donpogi.c(100): error C2198: 'function through pointer' : too few arguments for call
+     1>..\src\plugins\donpogi.c(188): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(190): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(325): error C2039: 'famerank' : is not a member of 'pc_interface'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(803) : see declaration of 'pc_interface'
+     1>..\src\plugins\donpogi.c(452): error C2065: 'SC_ITEMSCRIPT' : undeclared identifier
+     1>..\src\plugins\donpogi.c(453): error C2065: 'SC_ITEMSCRIPT' : undeclared identifier
+     1>..\src\plugins\donpogi.c(495): error C2039: 'class_' : is not a member of 'mmo_charstatus'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\common/mmo.h(581) : see declaration of 'mmo_charstatus'
+     1>..\src\plugins\donpogi.c(495): error C2198: 'function through pointer' : too few arguments for call
+     1>..\src\plugins\donpogi.c(511): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(624): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(711): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(756): error C2039: 'class_' : is not a member of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+                 C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\src\map/pc.h(173) : see declaration of 'map_session_data'
+     1>..\src\plugins\donpogi.c(756): fatal error C1903: unable to recover from previous error(s); stopping compilation
+     1>Done Building Project "C:\Users\DON\Desktop\RebelRO New Project\RebelRO SVN\vcproj-12\donpogi.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.56

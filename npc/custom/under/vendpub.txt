@@ -1,0 +1,11 @@
+mall,92,117,6	script	The Pub#pub	2_BULLETIN_BOARD,{
+mes "[^FF0000The Pub^000000]";
+mes "Please use this map for vending items!";
+next;
+mes "[^FF0000The Pub^000000]";
+mes "Vending in other map such as Main Town will be prohibited. A punishment in exchange.";
+close;
+OnInit:
+waitingroom "Buy & Sell Area",0;
+end;
+}

@@ -1,0 +1,92 @@
+prontera,146,162,6	script	Lotti Girl	4_F_SARAH_BABY,{
+	mes "[Lotti Girl]";
+	mes "Hello Sir! Are you out";
+	mes "shopping in the city?!";
+	next;
+	mes "[Lotti Girl]";
+	mes "I'm Lotti! I'll exchange cool";
+	mes "random prizes for every";
+	mes "^ff00001 Lottery Ticket^000000.";
+	next;
+	mes "[Lotti Girl]";
+	mes "Our Grand prize is:";
+	mes "^ff0000+10 Armor Refine Ticket^000000";
+	mes "^ff0000+10 Weapon Refine Ticket^000000";
+	mes "^ff0000+9 Armor Refine Ticket^000000";
+	mes "^ff0000+9 Weapon Refine Ticket^000000";
+	next;
+	mes "[Lotti Girl]";
+	mes "Special prizes are:";
+	mes "^ff0000+8 Armor Refine Ticket^000000";
+	mes "^ff0000+8 Weapon Refine Ticket^000000";
+	mes "^ff0000+7 Armor Refine Ticket^000000";
+	mes "^ff0000+7 Weapon Refine Ticket^000000";
+	mes "^ff0000Synthesis Tickets^000000";
+	mes "^ff0000Castle Drops^000000";
+	next;
+	mes "Consolation prizes are:";
+	mes "^ff0000Glistening Coat/s^000000";
+	mes "^ff0000Yggdrasil Berry/s^000000";
+	mes "^ff0000Poison Bottle/s^000000";
+	mes "^ff0000Box of Thunder/s^000000";
+	if (countitem(7528) < 1)
+		close;
+	next;
+	if(select("Deal me in!:No way...")==2)
+		close;
+	mes "[Lotti Girl]";
+	mes "Here we go...";
+	delitem 7528,1;
+	set .@Total,22;
+	//<%>,<ItemID>,<Amount>
+	setarray .@P1[0],1,30550,1;
+	setarray .@P2[0],5,30549,1;
+	setarray .@P3[0],1,30546,1;
+	setarray .@P4[0],5,30545,1;
+	setarray .@P5[0],10,30548,1;
+	setarray .@P6[0],10,30547,1;
+	setarray .@P7[0],10,30544,1;
+	setarray .@P8[0],10,30543,1;
+	setarray .@P9[0],30,7078,1;
+	setarray .@P10[0],30,7092,1;
+	setarray .@P11[0],30,7086,1;
+	setarray .@P12[0],30,7091,1;
+	setarray .@P13[0],30,7090,1;
+	setarray .@P14[0],30,7077,1;
+	setarray .@P15[0],30,7083,1;
+	setarray .@P16[0],30,7089,1;
+	setarray .@P17[0],60,13517,5;
+	setarray .@P18[0],80,7139,5;
+	setarray .@P19[0],80,607,20;
+	setarray .@P20[0],80,678,10;
+	setarray .@P21[0],80,12028,20;
+	setarray .@P22[0],80,7139,5;
+	setarray .@P23[0],50,30540,2;
+	setarray .@Default[0],7139,5;
+	set .@i, rand(1,.@Total);
+	if (rand(1,100) > getd(".@P"+.@i+"[0]"))
+	{
+		for(set .@j,0; .@j<getarraysize(.@Default); set .@j,.@j+2)
+		{
+			getitem .@Default[.@j], .@Default[.@j+1];
+			if(!.@k[0])
+				setarray .@k[0], .@Default[.@j], .@Default[.@j+1];
+		}
+	}
+	else{
+		for(set .@j,1; .@j<getarraysize(getd(".@P"+.@i)); set .@j,.@j+2)
+		{
+			getitem getd(".@P"+.@i+"["+.@j+"]"), getd(".@P"+.@i+"["+(.@j+1)+"]");
+			if (!.@k[0])
+			{
+				set .@gz,.@i;
+				setarray .@k[0], getd(".@P"+.@i+"["+.@j+"]"), getd(".@P"+.@i+"["+(.@j+1)+"]");
+				break;
+			}
+		}
+	}
+	if(1<=.@gz&&.@gz<=40)
+		announce "Congratulations! "+strcharinfo(0)+" just received "+getitemname(.@k[0])+" x "+.@k[1]+" from Lotti Girl!",0;
+	specialeffect(248, AREA, playerattached());
+	close;
+}
